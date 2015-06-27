@@ -1,0 +1,6 @@
+<div class="col-md-8">
+  <h1>ぱくぱくレストラン一覧</h1>
+    <% @restaurants.each do |restaurant| %>
+    <h2 class="index_title"><a href="/restaurants/<%= restaurant.id %>"><%= restaurant.name %></a></h2>
+    <% end %>
+</div>

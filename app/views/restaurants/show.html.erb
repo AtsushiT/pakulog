@@ -1,0 +1,9 @@
+<div class="col-md-8">
+  <h1>パクパクレストラン情報</h1>
+  <p><%= @restaurant.name %></p>
+  <p><%= @restaurant.phone %></p>
+  <p><%= @restaurant.address %></p>
+  <p><%= @restaurant.URL %></p>
+  <%= link_to '編集する', edit_restaurant_path, class: 'btn btn-default' %>
+  <%= link_to '削除する', restaurant_path, method: :delete, class: 'btn btn-danger'%>
+</div>
