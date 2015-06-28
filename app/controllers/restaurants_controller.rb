@@ -1,8 +1,10 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @restaurants = Restaurant.all
+    @reviews = Review.all
   end
 
   def new
@@ -22,6 +24,7 @@ class RestaurantsController < ApplicationController
   end
 
   def update
+    @restaurant = Restaurant.find(params[:id])
     if @restaurant.update(restaurant_params)
         redirect_to @restaurant
     else
@@ -30,6 +33,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    @reviews = Review.all
     #ここにはレビューのコントローラーを書くことになりそう
   end
 
@@ -43,7 +47,8 @@ private
       :name,
       :address,
       :phone,
-      :URL
+      :URL,
+      :image_url
       )
   end
 

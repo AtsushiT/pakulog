@@ -13,6 +13,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse-menu">
         <% if user_signed_in? %>
+        <p class="navbar-text navbar-left">
+        ログイン中：<%= current_user.email %>さん</p>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to '設定変更', edit_user_registration_path %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>

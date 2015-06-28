@@ -1,6 +1,72 @@
 <div class="col-md-8">
-  <h1>ぱくぱくレストラン一覧</h1>
-    <% @restaurants.each do |restaurant| %>
-    <h2 class="index_title"><a href="/restaurants/<%= restaurant.id %>"><%= restaurant.name %></a></h2>
-    <% end %>
+      <h2>ぱくぱくレストラン一覧</h2>
+      <% @restaurants.each do |restaurant| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+        <a href="/restaurants/<%= restaurant.id %>"><%= restaurant.name %></a>
+         <span class="text-muted pull-right">追加日：<%= restaurant.created_at %></span>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="thumbnail">
+              <img src="<%= restaurant.image_url%>">
+            </div> <!-- thumnail -->
+          </div> <!-- col-sm-2 -->
+          <div class="col-sm-10">
+            <span class="stars"><span></span></span>
+             <p>［ 口コミ<%= restaurant.reviews.count %>件 ］</p>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                <% restaurant.reviews.each do |review| %>
+                <p>
+                  <%= review.body %>
+                  by ぱくぱく戦士<%= review.user.id %>号さん
+                </p>
+                <% end %>
+                </div> <!-- panel-body -->
+              </div> <!-- panel panel-default -->
+          </div> <!-- col-sm-10 -->
+        </div> <!-- row -->
+      </div> <!-- panel-body -->
+  </div>
+        <% end %>
+  <hr>
+  <h2>最新口コミ</h2>
+      <% @reviews.each do |review| %>
+  <div class="col-sm-2">
+          <div class="thumbnail">
+            <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+          </div><!-- /thumbnail -->
+  </div><!-- /col-sm-2 -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="media-left">
+          <small>ぱくぱく戦士<%= review.user.id %>号さんのレビュー</small>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-10">
+                <p>
+                  <%= review.body %>
+                  by ぱくぱく戦士<%= review.user.id %>号さん
+                </p>
+          </div> <!-- col-sm-10 -->
+        </div> <!-- row -->
+      </div> <!-- panel-body -->
+  </div>
+        <% end %>
+</div>
+<div class="col-lg-4">
+    <a class="btn btn-success btn-block" href="/restaurants/new">新しくお店を登録する</a>
+  <hr>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Inspiered by
+    </div>
+    <a href="http://tabelog.com/"><img src="http://sakutcafe.com/wp/wp-content/uploads/2014/01/tabelog_new.jpg"></a>
+  </div>
+  <h4>Sponsored Ad</h4>
+  <a href="http://cookpad.com/loading/ct/?crid=27577&pid=1"><img src="http://img5-ak.cpcdn.com/ad4/914ba7ad166248f091b9b58df4dac80c.jpg?1424163415"></a>
 </div>
