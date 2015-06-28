@@ -20,6 +20,12 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+# 以降で追加：GMOクラウド用設定
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  database: pakulog
+  port: 3306
+  username: toyokura
+  password: atsusix
+  host: localhost
